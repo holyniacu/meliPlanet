@@ -21,7 +21,7 @@ public class WeatherPrediction {
     @GeneratedValue
     private Long id;
 	/** Day over which the weather condition will apply. */
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private int day;
 	/** The weather condition, never null. */
 	@Column(nullable = false, name="weather_condition")
@@ -46,6 +46,15 @@ public class WeatherPrediction {
 	 */
 	void update(final WeatherCondition theWeatherCondition) {
 		weatherCondition = theWeatherCondition;
+	}
+	
+	/**
+	 * Retrieves the day represented by this weather condition.
+	 * 
+	 * @return The day represented by this weather condition.
+	 */
+	public int getDay() {
+		return day;
 	}
 	
 	/**

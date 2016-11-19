@@ -1,3 +1,4 @@
+com/meli/controller/WeatherSummaryDto.class
 com/meli/controller/HomeController.class
 com/meli/domain/WeatherPredictionRepository.class
 com/meli/domain/Planet.class

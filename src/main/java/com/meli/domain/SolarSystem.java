@@ -36,10 +36,10 @@ public class SolarSystem {
 	/**
 	 * Constructs a solar system with the given planets.
 	 * 
-	 * @param thePlanets The planets that are included in the solar system, cannot be null.
+	 * @param thePlanets The planets that are included in the solar system,
+	 * cannot be null and must contain 3 planets.
 	 */
 	public SolarSystem(final List<Planet> thePlanets) {
-		//Validate
 		planets = thePlanets;
 	}
 	
