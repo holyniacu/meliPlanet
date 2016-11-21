@@ -1,5 +1,7 @@
 package com.meli.domain;
 
+import org.apache.commons.lang.Validate;
+
 import com.meli.util.MathUtil;
 
 /**
@@ -30,6 +32,7 @@ public class Planet {
 	 */
 	public Planet(final String theName, final int theInitialAngle,
 			final int theAngularVelocity, final int theSunDistance) {
+		Validate.notEmpty(theName, "The name of the planet cannot be empty");
 		name = theName;
 		initialAngle = theInitialAngle;
 		angularVelocity = theAngularVelocity;

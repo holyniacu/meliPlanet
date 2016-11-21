@@ -36,7 +36,7 @@ public class HomeController {
 		if (weatherPrediction != null) {
 			return weatherPrediction;
 		} else {
-			//Errors will not be handled nicely
+			//Errors will not be handled nicely.
 			throw new RuntimeException("The prediction for this day is unknown");
 		}
     }

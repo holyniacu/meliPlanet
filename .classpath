@@ -58,5 +58,6 @@
   <classpathentry kind="var" path="M2_REPO/org/springframework/spring-orm/4.3.4.RELEASE/spring-orm-4.3.4.RELEASE.jar" sourcepath="M2_REPO/org/springframework/spring-orm/4.3.4.RELEASE/spring-orm-4.3.4.RELEASE-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/springframework/spring-aspects/4.3.4.RELEASE/spring-aspects-4.3.4.RELEASE.jar" sourcepath="M2_REPO/org/springframework/spring-aspects/4.3.4.RELEASE/spring-aspects-4.3.4.RELEASE-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/hsqldb/hsqldb/2.3.3/hsqldb-2.3.3.jar" sourcepath="M2_REPO/org/hsqldb/hsqldb/2.3.3/hsqldb-2.3.3-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-lang/commons-lang/2.6/commons-lang-2.6.jar"/>
   <classpathentry kind="var" path="M2_REPO/junit/junit/4.8.2/junit-4.8.2.jar" sourcepath="M2_REPO/junit/junit/4.8.2/junit-4.8.2-sources.jar"/>
 </classpath>

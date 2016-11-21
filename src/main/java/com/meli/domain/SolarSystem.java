@@ -3,10 +3,12 @@ package com.meli.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.Validate;
+
 import com.meli.util.MathUtil;
 
 /**
- * A system where the sun is the center and planets orbit around it.
+ * A system where the sun is in the center and planets orbit around it.
  * The solar system can have only 3 planets and the weather condition
  * in each planet is based on their position in the solar system.
  * The weather conditions are as follows:
@@ -40,6 +42,8 @@ public class SolarSystem {
 	 * cannot be null and must contain 3 planets.
 	 */
 	public SolarSystem(final List<Planet> thePlanets) {
+		Validate.notEmpty(thePlanets, "The list of planets can not be empty.");
+		Validate.isTrue(thePlanets.size() == 3, "The solar system must contain 3 planets.");
 		planets = thePlanets;
 	}
 	
@@ -69,10 +73,12 @@ public class SolarSystem {
 				} else {
 					weatherPredictions.add(new WeatherPrediction(i, WeatherCondition.OPTIMAL));
 				}
-			} else if (MathUtil.isPointInsideTriangle(SUN_POSITION, points.get(0), points.get(1), points.get(2))) {
+			} else if (MathUtil.isPointInsideTriangle(SUN_POSITION, points.get(0), points.get(1),
+					points.get(2))) {
 				WeatherPrediction rainyForecast = new WeatherPrediction(i, WeatherCondition.RAIN);
 				weatherPredictions.add(rainyForecast);
-				double perimeterLength = MathUtil.getTrianglePerimeterLength(points.get(0), points.get(1), points.get(2));
+				double perimeterLength = MathUtil.getTrianglePerimeterLength(points.get(0),
+						points.get(1), points.get(2));
 				if (perimeterLength > maxPerimeterLength) {
 					maxPerimeterLength = perimeterLength;
 					maxPerimeterForecast = rainyForecast;

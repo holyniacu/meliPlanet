@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
+import org.apache.commons.lang.Validate;
+
 import com.meli.domain.Point;
 
 /**
@@ -52,7 +54,7 @@ public class MathUtil {
 	 * @return true if the points are aligned, false otherwise.
 	 */
 	public static boolean arePointsAligned(final List<Point> points) {
-		//Validate.notEmpty(points, "The list of points cannot be null");
+		Validate.notEmpty(points, "The list of points cannot be null");
 		if (points.size() <= 2) {
 			//For sure we can join 2 points with a single line.
 			return true;
@@ -72,7 +74,8 @@ public class MathUtil {
 				aligned = true;
 			} else if (!equals(new BigDecimal(y2y1Diff), BigDecimal.ZERO)
 					&& !equals(new BigDecimal(y3y1Diff), BigDecimal.ZERO)) {
-				aligned = equals(new BigDecimal((x2 - x1) / y2y1Diff), new BigDecimal((x3 - x1) / y3y1Diff));
+				aligned = equals(new BigDecimal((x2 - x1) / y2y1Diff),
+						new BigDecimal((x3 - x1) / y3y1Diff));
 			} else {
 				aligned = false;
 			}
@@ -95,6 +98,10 @@ public class MathUtil {
 	public static boolean isPointInsideTriangle(final Point pointToCheck,
 			final Point triangleVertex1, final Point triangleVertex2,
 			final Point triangleVertex3) {
+		Validate.notNull(pointToCheck, "The point to check cannot be null");
+		Validate.notNull(triangleVertex1, "The vertex cannot be null");
+		Validate.notNull(triangleVertex2, "The vertex cannot be null");
+		Validate.notNull(triangleVertex3, "The vertex cannot be null");
 		double x = pointToCheck.getX();
 		double y = pointToCheck.getY();
 		double x1 = triangleVertex1.getX();
@@ -119,6 +126,9 @@ public class MathUtil {
 	 */
 	public static double getTrianglePerimeterLength(final Point vertex1,
 			final Point vertex2, final Point vertex3) {
+		Validate.notNull(vertex1, "The vertex cannot be null");
+		Validate.notNull(vertex2, "The vertex cannot be null");
+		Validate.notNull(vertex3, "The vertex cannot be null");
 		double d1 = calculateDistance(vertex1, vertex2);
 		double d2 = calculateDistance(vertex2, vertex3);
 		double d3 = calculateDistance(vertex1, vertex3);
@@ -141,12 +151,14 @@ public class MathUtil {
 	}
 	
 	/**
-	 * Indicates if two numbers are equals.
-	 * @param x the first number.
-	 * @param y the second number
-	 * @return true if are equals, false otherwise.
+	 * Indicates if two big decimal are equals based on a pre defined epsilon.
+	 * @param n1 the first number, cannot be null.
+	 * @param n2 the second number, cannot be null.
+	 * @return true if the numbers are considered to be equal, false otherwise.
 	 */
 	public static boolean equals(final BigDecimal n1, final BigDecimal n2) {
+		Validate.notNull(n1, "The number cannot be null");
+		Validate.notNull(n2, "The number cannot be null");
 		BigDecimal diff = n1.abs().subtract(n2.abs());
 		return diff.abs().compareTo(new BigDecimal(DELTA_ERROR)) < 1;
 	}
